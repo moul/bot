@@ -1,3 +1,3 @@
-module moul.io/golang-repo-template
+module moul.io/moul-bot
 
 go 1.13
