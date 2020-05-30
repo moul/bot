@@ -35,7 +35,8 @@ generate_local:
 	@set -e; for proto in $(PROTOS_SRC); do ( set -xe; \
 	  protoc $(PROTOC_OPTS) \
 	    --grpc-gateway_out=logtostderr=true:"$(GOPATH)/src" \
-	    --go_out="plugins=grpc:$(GOPATH)/src" \
+	    --go_out="$(GOPATH)/src" \
+	    --go-grpc_out="$(GOPATH)/src" \
 	    "$$proto" \
 	); done
 	goimports -w ./pkg ./cmd ./internal

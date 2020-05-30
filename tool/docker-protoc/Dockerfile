@@ -8,8 +8,8 @@ RUN     go get -u \
         github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger \
         github.com/simplealpine/json2yaml \
         golang.org/x/tools/cmd/goimports
-#RUN     go get -u google.golang.org/protobuf/protoc-gen-go
-RUN     go get -u github.com/golang/protobuf/protoc-gen-go
+RUN     go get -u google.golang.org/protobuf/cmd/protoc-gen-go
+RUN     go get -u google.golang.org/grpc/cmd/protoc-gen-go-grpc
 
 FROM    golang:1.14-alpine
 RUN     apk --no-cache add git make protobuf gcc libc-dev npm perl-utils && \
