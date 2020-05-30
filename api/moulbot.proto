@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package moulbot;
+
+option go_package = "moul.io/moulbot/pkg/moulbotpb";
+
+service WebAPI {
+  rpc Ping(Ping.Request) returns (Ping.Response) { option (google.api.http) = {get: "/ping"}; };
+}
+
+message Ping {
+  message Request {}
+  message Response {}
+}
