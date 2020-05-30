@@ -6,17 +6,19 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"syscall"
 
 	"github.com/bwmarrin/discordgo"
-	rungroup "github.com/oklog/run"
+	"github.com/oklog/run"
 	ff "github.com/peterbourgon/ff/v3"
 	"github.com/peterbourgon/ff/v3/ffcli"
 	"moul.io/banner"
 	"moul.io/godev"
+	"moul.io/moul-bot/pkg/moulbotsvc"
 )
 
 func main() {
-	if err := run(os.Args); err != nil {
+	if err := cli(os.Args); err != nil {
 		log.Fatalf("error: %v", err)
 		os.Exit(1)
 	}
@@ -28,7 +30,7 @@ var (
 	discordAdminChannel string
 )
 
-func run(args []string) error {
+func cli(args []string) error {
 	rootFlags := flag.NewFlagSet("root", flag.ExitOnError)
 	rootFlags.StringVar(&discordToken, "discord-token", "", "Discord Bot Token")
 	rootFlags.StringVar(&discordAdminChannel, "discord-admin-channel", "", "Discord channel ID for admin messages")
@@ -41,6 +43,7 @@ func run(args []string) error {
 		},
 		Subcommands: []*ffcli.Command{
 			{Name: "discord-bot", Exec: discordBotCmd},
+			{Name: "api-server", Exec: apiServerCmd},
 			// FIXME: make a mode that starts a unique bot with multiple interfaces (disocord, http, grpc, ssh, etc)
 		},
 		Exec: func(context.Context, []string) error {
@@ -48,6 +51,16 @@ func run(args []string) error {
 		},
 	}
 	return root.ParseAndRun(context.Background(), args[1:])
+}
+
+func apiServerCmd(ctx context.Context, _ []string) error {
+	opts := moulbotsvc.Opts{}
+	svc := moulbotsvc.New(opts)
+	defer svc.Close()
+	gr := run.Group{}
+	gr.Add(run.SignalHandler(ctx, syscall.SIGKILL, syscall.SIGTERM))
+	gr.Add(svc.StartServer, svc.CloseServer)
+	return gr.Run()
 }
 
 func discordBotCmd(ctx context.Context, _ []string) error {
@@ -76,7 +89,7 @@ func discordBotCmd(ctx context.Context, _ []string) error {
 	}
 	defer dg.Close()
 	fmt.Println("Bot is now running.  Press CTRL-C to exit.")
-	var g rungroup.Group
-	g.Add(rungroup.SignalHandler(ctx, os.Interrupt))
+	var g run.Group
+	g.Add(run.SignalHandler(ctx, os.Interrupt))
 	return g.Run()
 }

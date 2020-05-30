@@ -4,6 +4,10 @@ GOBINS ?=	./cmd/moul-bot
 
 include rules.mk
 
+.PHONY: run-api
+run-api: install
+	moul-bot api-server
+
 .PHONY: run-discord
 run-discord: install
 	moul-bot discord-bot
