@@ -1,0 +1,8 @@
+## Discord
+enable-discord true
+discord-token REPLACE_ME
+discord-admin-channel REPLACE_ME
+
+## Server
+enable-server true
+server-bind 0.0.0.0:8000
