@@ -29,7 +29,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"moul.io/banner"
-	"moul.io/moul-bot/pkg/moulbotpb"
+	"moul.io/bot/pkg/moulbotpb"
 )
 
 func (svc *Service) StartServer() error {

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package moulbot;
 
-option go_package = "moul.io/moul-bot/pkg/moulbotpb";
+option go_package = "moul.io/bot/pkg/moulbotpb";
 
 import "google/api/annotations.proto";
 
