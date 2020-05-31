@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  moul-bot:
+    image: moul/moul-bot:latest
+    restart: on-failure
+    volumes:
+      - .:/app
+    working_dir: /app
+    labels:
+      com.centurylinklabs.watchtower.enable: "true"
+    command:
+      run
+    ports:
+      - 8000
+    environment:
+      - VIRTUAL_HOST=bot.moul.io
+      - VIRTUAL_PORT=8000
+    networks:
+      - default
+      - service-proxy
+
+networks:
+  service-proxy:
+    external: true
