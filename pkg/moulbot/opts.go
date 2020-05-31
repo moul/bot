@@ -26,6 +26,12 @@ type Opts struct {
 	ServerRequestTimeout     time.Duration
 	ServerShutdownTimeout    time.Duration
 	ServerWithPprof          bool
+
+	/// GitHub
+
+	EnableGitHub       bool
+	GitHubMoulToken    string
+	GitHubMoulBotToken string
 }
 
 func (opts *Opts) applyDefaults() {

@@ -41,6 +41,10 @@ func app(args []string) error {
 	rootFlags.DurationVar(&opts.ServerRequestTimeout, "server-request-timeout", opts.ServerRequestTimeout, "server request timeout")
 	rootFlags.DurationVar(&opts.ServerShutdownTimeout, "server-shutdown-timeout", opts.ServerShutdownTimeout, "server shutdown timeout")
 	rootFlags.BoolVar(&opts.ServerWithPprof, "server-with-pprof", opts.ServerWithPprof, "enable pprof on HTTP server")
+	/// github
+	rootFlags.BoolVar(&opts.EnableGitHub, "enable-github", opts.EnableGitHub, "enable GitHub")
+	rootFlags.StringVar(&opts.GitHubMoulToken, "github-moul-token", opts.GitHubMoulToken, `"moul" GitHub token`)
+	rootFlags.StringVar(&opts.GitHubMoulBotToken, "github-moul-bot-token", opts.GitHubMoulBotToken, `"moul" GitHub token`)
 
 	root := &ffcli.Command{
 		FlagSet: rootFlags,
@@ -89,6 +93,9 @@ func runCmd(ctx context.Context, _ []string) error {
 	}
 	if opts.EnableServer {
 		gr.Add(svc.StartServer, svc.CloseServer)
+	}
+	if opts.EnableGitHub {
+		gr.Add(svc.StartGitHub, svc.CloseGitHub)
 	}
 	return gr.Run()
 }

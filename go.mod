@@ -7,6 +7,9 @@ require (
 	github.com/go-chi/chi v4.1.1+incompatible
 	github.com/gogo/gateway v1.1.0
 	github.com/golang/protobuf v1.4.2
+	github.com/google/go-github v17.0.0+incompatible
+	github.com/google/go-github/v32 v32.0.0
+	github.com/google/go-querystring v1.0.0 // indirect
 	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.2.0
 	github.com/grpc-ecosystem/grpc-gateway v1.14.6
@@ -18,6 +21,7 @@ require (
 	go.uber.org/zap v1.15.0
 	golang.org/x/crypto v0.0.0-20200510223506-06a226fb4e37 // indirect
 	golang.org/x/net v0.0.0-20200528225125-3c3fba18258b // indirect
+	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d
 	golang.org/x/sys v0.0.0-20200523222454-059865788121 // indirect
 	golang.org/x/text v0.3.2 // indirect
 	google.golang.org/genproto v0.0.0-20200528191852-705c0b31589b

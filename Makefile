@@ -14,7 +14,7 @@ include rules.mk
 
 .PHONY: run
 run: install
-	moul-bot --dev-mode --enable-server --enable-discord run
+	moul-bot --dev-mode --enable-server --enable-discord --enable-github run
 
 .PHONY: run-discord
 run-discord: install
@@ -23,6 +23,10 @@ run-discord: install
 .PHONY: run-server
 run-server: install
 	moul-bot --dev-mode --enable-server run
+
+.PHONY: run-github
+run-github: install
+	moul-bot --dev-mode --enable-github run
 
 PROTOS_SRC := $(wildcard ./api/*.proto)
 GEN_DEPS := $(PROTOS_SRC) Makefile
