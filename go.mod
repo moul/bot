@@ -15,7 +15,7 @@ require (
 	github.com/soheilhy/cmux v0.1.4
 	github.com/treastech/logger v0.0.0-20180705232552-e381e9ecf2e3
 	go.uber.org/zap v1.15.0
-	google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013
+	google.golang.org/genproto v0.0.0-20200528191852-705c0b31589b
 	google.golang.org/grpc v1.29.1
 	google.golang.org/protobuf v1.24.0
 	moul.io/banner v1.0.0
