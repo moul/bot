@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/google/go-github/v32/github"
 	"go.uber.org/zap"
 	"moul.io/banner"
 )
@@ -18,9 +19,17 @@ type Service struct {
 	cancel func()
 
 	/// discord
+
 	discord *discordgo.Session
+
 	/// server
+
 	serverListener net.Listener
+
+	/// github
+
+	githubMoulClient    *github.Client
+	githubMoulBotClient *github.Client
 }
 
 func New(opts Opts) Service {
