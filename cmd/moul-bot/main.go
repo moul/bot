@@ -13,7 +13,7 @@ import (
 	"github.com/peterbourgon/ff/v3/ffcli"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
-	"moul.io/moul-bot/pkg/moulbot"
+	"moul.io/bot/pkg/moulbot"
 	"moul.io/srand"
 )
 

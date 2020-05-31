@@ -1,6 +1,14 @@
-GOPKG ?=	moul.io/moul-bot
-DOCKER_IMAGE ?=	moul/moul-bot
+GOPKG ?=	moul.io/bot
+DOCKER_IMAGE ?=	moul/bot
 GOBINS ?=	./cmd/moul-bot
+
+PRE_INSTALL_STEPS += generate
+PRE_UNITTEST_STEPS += generate
+PRE_TEST_STEPS += generate
+PRE_BUILD_STEPS += generate
+PRE_LINT_STEPsS += generate
+PRE_TIDY_STEPS += generate
+PRE_BUMPDEPS_STEPS += generate
 
 include rules.mk
 
@@ -27,8 +35,8 @@ gen.sum: $(GEN_DEPS)
 	  GO111MODULE=on go mod vendor; \
 	  docker run \
 	    --user=`id -u` \
-	    --volume="$(PWD):/go/src/moul.io/moul-bot" \
-	    --workdir="/go/src/moul.io/moul-bot" \
+	    --volume="$(PWD):/go/src/moul.io/bot" \
+	    --workdir="/go/src/moul.io/bot" \
 	    --entrypoint="sh" \
 	    --rm \
 	    moul/moul-bot-protoc:1 \

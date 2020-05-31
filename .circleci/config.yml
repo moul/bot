@@ -7,14 +7,14 @@ workflows:
   main:
     jobs:
       - moul/golang-build:
-          gopkg: moul.io/moul-bot
+          gopkg: moul.io/bot
       - moul/golang-build:
-          gopkg: moul.io/moul-bot
+          gopkg: moul.io/bot
           tag: '1.13'
       - moul/golang-build:
-          gopkg: moul.io/moul-bot
+          gopkg: moul.io/bot
           tag: '1.12'
       - moul/golang-build:
-          gopkg: moul.io/moul-bot
+          gopkg: moul.io/bot
           tag: '1.11'
       - moul/docker-build
