@@ -3,6 +3,7 @@ package moulbot
 import (
 	"context"
 	"fmt"
+	"net"
 	"os"
 
 	"github.com/bwmarrin/discordgo"
@@ -16,7 +17,10 @@ type Service struct {
 	ctx    context.Context
 	cancel func()
 
+	/// discord
 	discord *discordgo.Session
+	/// server
+	serverListener net.Listener
 }
 
 func New(opts Opts) Service {
@@ -29,11 +33,12 @@ func New(opts Opts) Service {
 		ctx:    ctx,
 		cancel: cancel,
 	}
-	svc.logger.Info("start service", zap.Any("opts", opts.Filtered()))
+	svc.logger.Info("service initialized", zap.Bool("dev-mode", opts.DevMode))
 	return svc
 }
 
 func (svc *Service) Close() {
 	svc.logger.Debug("closing service")
 	svc.cancel()
+	fmt.Fprintln(os.Stderr, banner.Inline("kthxbie"))
 }

@@ -25,7 +25,7 @@ type Opts struct {
 	ServerCORSAllowedOrigins string
 	ServerRequestTimeout     time.Duration
 	ServerShutdownTimeout    time.Duration
-	//WithPprof                bool
+	ServerWithPprof          bool
 }
 
 func (opts *Opts) applyDefaults() {

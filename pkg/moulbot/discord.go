@@ -13,7 +13,7 @@ import (
 
 func (svc *Service) StartDiscord() error {
 	fmt.Fprintln(os.Stderr, banner.Inline("discord"))
-	svc.logger.Info("starting discord")
+	svc.logger.Debug("starting discord")
 
 	dg, err := discordgo.New("Bot " + svc.opts.DiscordToken)
 	if err != nil {
@@ -52,6 +52,6 @@ func (svc *Service) CloseDiscord(error) {
 	if svc.discord != nil {
 		svc.discord.Close()
 		svc.logger.Debug("discord closed")
-		svc.cancel()
 	}
+	svc.cancel()
 }

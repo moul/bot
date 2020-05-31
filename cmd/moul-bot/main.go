@@ -40,6 +40,7 @@ func app(args []string) error {
 	rootFlags.StringVar(&opts.ServerCORSAllowedOrigins, "server-cors-allowed-origins", opts.ServerCORSAllowedOrigins, "allowed CORS origins")
 	rootFlags.DurationVar(&opts.ServerRequestTimeout, "server-request-timeout", opts.ServerRequestTimeout, "server request timeout")
 	rootFlags.DurationVar(&opts.ServerShutdownTimeout, "server-shutdown-timeout", opts.ServerShutdownTimeout, "server shutdown timeout")
+	rootFlags.BoolVar(&opts.ServerWithPprof, "server-with-pprof", opts.ServerWithPprof, "enable pprof on HTTP server")
 
 	root := &ffcli.Command{
 		FlagSet: rootFlags,
