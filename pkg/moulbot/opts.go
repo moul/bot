@@ -10,6 +10,7 @@ import (
 type Opts struct {
 	Context context.Context
 	Logger  *zap.Logger
+	DevMode bool
 
 	/// Discord
 

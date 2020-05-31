@@ -29,6 +29,7 @@ var opts moulbot.Opts
 func app(args []string) error {
 	opts = moulbot.DefaultOpts()
 	rootFlags := flag.NewFlagSet("root", flag.ExitOnError)
+	rootFlags.BoolVar(&opts.DevMode, "dev-mode", opts.DevMode, "start in developer mode")
 	/// discord
 	rootFlags.BoolVar(&opts.EnableDiscord, "enable-discord", opts.EnableDiscord, "enable discord bot")
 	rootFlags.StringVar(&opts.DiscordToken, "discord-token", opts.DiscordToken, "discord bot token")

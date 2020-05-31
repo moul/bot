@@ -19,7 +19,11 @@ func (svc *Service) StartDiscord() error {
 	if err != nil {
 		return err
 	}
-	_, err = dg.ChannelMessageSend(svc.opts.DiscordAdminChannel, fmt.Sprintf("**Hello World!**"))
+	msg := "**Hello World!**"
+	if svc.opts.DevMode {
+		msg += " (dev)"
+	}
+	_, err = dg.ChannelMessageSend(svc.opts.DiscordAdminChannel, msg)
 	if err != nil {
 		return err
 	}
