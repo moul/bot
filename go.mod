@@ -7,7 +7,7 @@ require (
 	github.com/go-chi/chi v4.1.1+incompatible
 	github.com/gogo/gateway v1.1.0
 	github.com/golang/protobuf v1.4.2
-	github.com/google/go-github v17.0.0+incompatible
+	github.com/google/go-github/v32 v32.0.0
 	github.com/google/go-github/v32 v32.0.0
 	github.com/google/go-querystring v1.0.0 // indirect
 	github.com/gorilla/websocket v1.4.2 // indirect
