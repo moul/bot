@@ -51,10 +51,7 @@ func (svc *Service) StartServer() error {
 	httpListener := smux.Match(cmux.HTTP2(), cmux.HTTP1())
 
 	// grpc server
-	grpcServer, err := svc.grpcServer()
-	if err != nil {
-		return err
-	}
+	grpcServer := svc.grpcServer()
 	var gr run.Group
 	gr.Add(func() error {
 		err := grpcServer.Serve(grpcListener)
@@ -175,7 +172,7 @@ func (svc *Service) AuthFuncOverride(ctx context.Context, path string) (context.
 	return ctx, nil
 }
 
-func (svc *Service) grpcServer() (*grpc.Server, error) {
+func (svc *Service) grpcServer() *grpc.Server {
 	authFunc := func(context.Context) (context.Context, error) {
 		return nil, errors.New("auth: dummy function, see AuthFuncOverride")
 	}
@@ -211,7 +208,7 @@ func (svc *Service) grpcServer() (*grpc.Server, error) {
 	)
 	moulbotpb.RegisterWebAPIServer(grpcServer, svc)
 
-	return grpcServer, nil
+	return grpcServer
 }
 
 func grpcServerStreamInterceptor() grpc.StreamServerInterceptor {
