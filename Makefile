@@ -4,13 +4,17 @@ GOBINS ?=	./cmd/moul-bot
 
 include rules.mk
 
-.PHONY: run-api
-run-api: install
-	moul-bot api-server
+.PHONY: run
+run: install
+	moul-bot --enable-server --enable-discord run
 
 .PHONY: run-discord
 run-discord: install
-	moul-bot discord-bot
+	moul-bot --enable-discord run
+
+.PHONY: run-server
+run-server: install
+	moul-bot --enable-server run
 
 PROTOS_SRC := $(wildcard ./api/*.proto)
 GEN_DEPS := $(PROTOS_SRC) Makefile
