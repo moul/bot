@@ -32,17 +32,21 @@ import (
 	"moul.io/bot/pkg/moulbotpb"
 )
 
+type serverDriver struct {
+	listener net.Listener
+}
+
 func (svc *Service) StartServer() error {
 	fmt.Fprintln(os.Stderr, banner.Inline("server"))
 	svc.logger.Debug("starting server", zap.String("bind", svc.opts.ServerBind))
 
 	// listeners
 	var err error
-	svc.serverListener, err = net.Listen("tcp", svc.opts.ServerBind)
+	svc.server.listener, err = net.Listen("tcp", svc.opts.ServerBind)
 	if err != nil {
 		return err
 	}
-	smux := cmux.New(svc.serverListener)
+	smux := cmux.New(svc.server.listener)
 	smux.HandleError(func(err error) bool {
 		svc.logger.Warn("cmux error", zap.Error(err))
 		return true
@@ -109,15 +113,15 @@ func (svc *Service) StartServer() error {
 }
 
 func (svc *Service) CloseServer(error) {
-	svc.logger.Debug("closing server", zap.Bool("was-started", svc.serverListener != nil))
-	if svc.serverListener != nil {
-		svc.serverListener.Close()
+	svc.logger.Debug("closing server", zap.Bool("was-started", svc.server.listener != nil))
+	if svc.server.listener != nil {
+		svc.server.listener.Close()
 	}
 	svc.cancel()
 }
 
 func (svc *Service) ServerListenerAddr() string {
-	return svc.serverListener.Addr().String()
+	return svc.server.listener.Addr().String()
 }
 
 func (svc *Service) httpServer() (*http.Server, error) {

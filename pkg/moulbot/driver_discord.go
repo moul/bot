@@ -11,6 +11,10 @@ import (
 	"moul.io/godev"
 )
 
+type discordDriver struct {
+	session *discordgo.Session
+}
+
 func (svc *Service) StartDiscord() error {
 	fmt.Fprintln(os.Stderr, banner.Inline("discord"))
 	svc.logger.Debug("starting discord")
@@ -41,16 +45,16 @@ func (svc *Service) StartDiscord() error {
 	if err != nil {
 		return err
 	}
-	svc.discord = dg
+	svc.discord.session = dg
 
 	<-svc.ctx.Done()
 	return nil
 }
 
 func (svc *Service) CloseDiscord(error) {
-	svc.logger.Debug("closing discord", zap.Bool("was-started", svc.discord != nil))
-	if svc.discord != nil {
-		svc.discord.Close()
+	svc.logger.Debug("closing discord", zap.Bool("was-started", svc.discord.session != nil))
+	if svc.discord.session != nil {
+		svc.discord.session.Close()
 		svc.logger.Debug("discord closed")
 	}
 	svc.cancel()

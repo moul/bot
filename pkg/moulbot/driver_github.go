@@ -11,6 +11,11 @@ import (
 	"moul.io/banner"
 )
 
+type githubDriver struct {
+	moulClient    *github.Client
+	moulBotClient *github.Client
+}
+
 func (svc *Service) StartGitHub() error {
 	fmt.Fprintln(os.Stderr, banner.Inline("github"))
 	svc.logger.Debug(
@@ -19,8 +24,8 @@ func (svc *Service) StartGitHub() error {
 		zap.Bool("moul-bot", svc.opts.GitHubMoulBotToken != ""),
 	)
 
-	svc.githubMoulClient = githubClient(svc.opts.GitHubMoulToken)
-	svc.githubMoulBotClient = githubClient(svc.opts.GitHubMoulBotToken)
+	svc.github.moulClient = githubClient(svc.opts.GitHubMoulToken)
+	svc.github.moulBotClient = githubClient(svc.opts.GitHubMoulBotToken)
 
 	// FIXME: print my info on init
 	// FIXME: check activity
