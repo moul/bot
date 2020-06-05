@@ -44,7 +44,7 @@ func app(args []string) error {
 	/// github
 	rootFlags.BoolVar(&opts.EnableGitHub, "enable-github", opts.EnableGitHub, "enable GitHub")
 	rootFlags.StringVar(&opts.GitHubMoulToken, "github-moul-token", opts.GitHubMoulToken, `"moul" GitHub token`)
-	rootFlags.StringVar(&opts.GitHubMoulBotToken, "github-moul-bot-token", opts.GitHubMoulBotToken, `"moul" GitHub token`)
+	rootFlags.StringVar(&opts.GitHubMoulbotToken, "github-moul-bot-token", opts.GitHubMoulbotToken, `"moul" GitHub token`)
 
 	root := &ffcli.Command{
 		FlagSet: rootFlags,
