@@ -31,7 +31,7 @@ type Opts struct {
 
 	EnableGitHub       bool
 	GitHubMoulToken    string
-	GitHubMoulBotToken string
+	GitHubMoulbotToken string
 }
 
 func (opts *Opts) applyDefaults() {
