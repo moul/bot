@@ -3,7 +3,7 @@ module moul.io/bot
 go 1.13
 
 require (
-	github.com/bwmarrin/discordgo v0.20.3
+	github.com/bwmarrin/discordgo v0.21.1
 	github.com/go-chi/chi v4.1.2+incompatible
 	github.com/gogo/gateway v1.1.0
 	github.com/golang/protobuf v1.4.2
@@ -22,9 +22,9 @@ require (
 	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d
 	golang.org/x/sys v0.0.0-20200523222454-059865788121 // indirect
 	google.golang.org/appengine v1.6.6 // indirect
-	google.golang.org/genproto v0.0.0-20200612171551-7676ae05be11
-	google.golang.org/grpc v1.29.1
-	google.golang.org/protobuf v1.24.0
+	google.golang.org/genproto v0.0.0-20200701001935-0939c5918c31
+	google.golang.org/grpc v1.30.0
+	google.golang.org/protobuf v1.25.0
 	gopkg.in/yaml.v3 v3.0.0-20200506231410-2ff61e1afc86 // indirect
 	moul.io/banner v1.0.1
 	moul.io/godev v1.6.0
