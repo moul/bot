@@ -23,31 +23,46 @@ func (svc *Service) StartDiscord() error {
 	if err != nil {
 		return err
 	}
-	msg := "**Hello World!**"
-	if svc.opts.DevMode {
-		msg += " (dev)"
-	}
-	_, err = dg.ChannelMessageSend(svc.opts.DiscordAdminChannel, msg)
-	if err != nil {
-		return err
-	}
-	dg.AddHandler(func(s *discordgo.Session, m *discordgo.MessageCreate) {
-		if m.Author.ID == s.State.User.ID {
-			return
-		}
-		log.Println(godev.JSON(m))
-		_, err := s.ChannelMessageSend(m.ChannelID, ">>> "+m.Content)
-		if err != nil {
-			svc.logger.Error("discord.ChannelMessageSend", zap.Error(err))
-		}
-	})
-	err = dg.Open()
-	if err != nil {
-		return err
-	}
-	svc.discord.session = dg
 
-	<-svc.ctx.Done()
+	// send hello message
+	{
+		msg := "**Hello World!**"
+		if svc.opts.DevMode {
+			msg += " (dev)"
+		}
+		_, err = dg.ChannelMessageSend(svc.opts.DiscordAdminChannel, msg)
+		if err != nil {
+			svc.logger.Warn("send hello message", zap.Error(err))
+		}
+	}
+
+	// handlers
+	{
+		dg.AddHandler(func(s *discordgo.Session, m *discordgo.MessageCreate) {
+			if m.Author.ID == s.State.User.ID {
+				return
+			}
+			if m.Author.Bot {
+				return
+			}
+			log.Println(godev.JSON(m))
+			_, err := s.ChannelMessageSend(m.ChannelID, ">>> "+m.Content)
+			if err != nil {
+				svc.logger.Error("discord.ChannelMessageSend", zap.Error(err))
+			}
+		})
+	}
+
+	// start
+	{
+		err = dg.Open()
+		if err != nil {
+			return err
+		}
+		svc.discord.session = dg
+
+		<-svc.ctx.Done()
+	}
 	return nil
 }
 
