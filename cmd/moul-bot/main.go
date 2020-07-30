@@ -7,7 +7,9 @@ import (
 	"math/rand"
 	"os"
 	"syscall"
+	"time"
 
+	"github.com/getsentry/sentry-go"
 	"github.com/oklog/run"
 	ff "github.com/peterbourgon/ff/v3"
 	"github.com/peterbourgon/ff/v3/ffcli"
@@ -66,6 +68,15 @@ func app(args []string) error {
 }
 
 func runCmd(ctx context.Context, _ []string) error {
+	if err := sentry.Init(sentry.ClientOptions{
+		Dsn: "https://98bc1fbb4f084a20bd4872240d7a0d01@o419562.ingest.sentry.io/5371975",
+		// Release: "",
+	}); err != nil {
+		return err
+	}
+	defer sentry.Flush(2 * time.Second)
+	sentry.CaptureMessage("Server Started.")
+
 	// init
 	rand.Seed(srand.Secure())
 	gr := run.Group{}

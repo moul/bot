@@ -4,6 +4,7 @@ go 1.13
 
 require (
 	github.com/bwmarrin/discordgo v0.21.1
+	github.com/getsentry/sentry-go v0.7.0
 	github.com/go-chi/chi v4.1.2+incompatible
 	github.com/gogo/gateway v1.1.0
 	github.com/golang/protobuf v1.4.2
