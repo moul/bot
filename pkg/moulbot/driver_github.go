@@ -119,6 +119,34 @@ func (svc *Service) githubRoutine() {
 						eventLogger.Warn("unknown CreateEvent RefType", zap.Any("payload", payload))
 					}
 				}
+			case "ForkEvent":
+				payload, err := event.ParsePayload()
+				if err != nil {
+					eventLogger.Error("event.ParsePayload", zap.Error(err))
+				} else {
+					typed, valid := payload.(*github.ForkEvent)
+					if !valid {
+						eventLogger.Error("invalid payload")
+						continue
+					}
+					fmt.Println("typed", godev.PrettyJSON(typed))
+					repo := typed.GetForkee()
+					eventLogger.Info("new fork", zap.String("name", repo.GetFullName()))
+					parts := strings.Split(repo.GetFullName(), "/")
+					svc.logger.Debug("trying to send an invite to moul-bot")
+					invite, _, err := svc.github.clients["moul"].Repositories.AddCollaborator(svc.ctx, parts[0], parts[1], "moul-bot", nil)
+					if err != nil {
+						svc.logger.Error("AddCollaborator", zap.Error(err))
+						continue
+					}
+					if invite.ID != nil {
+						svc.logger.Debug("accepting invite")
+						_, err = svc.github.clients["moul-bot"].Users.AcceptInvitation(svc.ctx, invite.GetID())
+						if err != nil {
+							svc.logger.Error("AcceptInvitation", zap.Error(err))
+						}
+					}
+				}
 			default:
 				eventLogger.Warn("unknown Event type")
 				fmt.Println("unknown type", godev.PrettyJSON(event))
