@@ -100,19 +100,35 @@ func (svc *Service) githubRoutine() {
 						continue
 					}
 					if typed.GetRefType() == "repository" {
-						eventLogger.Info("new repo")
+						eventLogger.Info("new repo", zap.String("name", event.GetRepo().GetName()))
 						parts := strings.Split(event.GetRepo().GetName(), "/")
-						svc.logger.Debug("trying to send an invite to moul-bot")
-						invite, _, err := svc.github.clients["moul"].Repositories.AddCollaborator(svc.ctx, parts[0], parts[1], "moul-bot", nil)
-						if err != nil {
-							svc.logger.Error("AddCollaborator", zap.Error(err))
-							continue
-						}
-						if invite.ID != nil {
-							svc.logger.Debug("accepting invite")
-							_, err = svc.github.clients["moul-bot"].Users.AcceptInvitation(svc.ctx, invite.GetID())
+
+						// moul invites moul-bot
+						var invite *github.CollaboratorInvitation
+						{
+							svc.logger.Debug("trying to send an invite to moul-bot")
+							var err error
+							invite, _, err = svc.github.clients["moul"].Repositories.AddCollaborator(svc.ctx, parts[0], parts[1], "moul-bot", nil)
 							if err != nil {
-								svc.logger.Error("AcceptInvitation", zap.Error(err))
+								svc.logger.Error("AddCollaborator", zap.Error(err))
+								continue
+							}
+						}
+						// moul-bot accepts the invitation
+						{
+							if invite.ID != nil {
+								svc.logger.Debug("accepting invite")
+								_, err = svc.github.clients["moul-bot"].Users.AcceptInvitation(svc.ctx, invite.GetID())
+								if err != nil {
+									svc.logger.Error("AcceptInvitation", zap.Error(err))
+								}
+							}
+						}
+						// moul-bot stars the repository
+						{
+							_, err := svc.github.clients["moul-bot"].Activity.Star(svc.ctx, parts[0], parts[1])
+							if err != nil {
+								svc.logger.Error("Star", zap.Error(err))
 							}
 						}
 					} else {
