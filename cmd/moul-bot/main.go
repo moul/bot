@@ -32,18 +32,18 @@ func app(args []string) error {
 	opts = moulbot.DefaultOpts()
 	rootFlags := flag.NewFlagSet("root", flag.ExitOnError)
 	rootFlags.BoolVar(&opts.DevMode, "dev-mode", opts.DevMode, "start in developer mode")
-	/// discord
+	// discord
 	rootFlags.BoolVar(&opts.EnableDiscord, "enable-discord", opts.EnableDiscord, "enable discord bot")
 	rootFlags.StringVar(&opts.DiscordToken, "discord-token", opts.DiscordToken, "discord bot token")
 	rootFlags.StringVar(&opts.DiscordAdminChannel, "discord-admin-channel", opts.DiscordAdminChannel, "discord channel ID for admin messages")
-	/// server
+	// server
 	rootFlags.BoolVar(&opts.EnableServer, "enable-server", opts.EnableServer, "enable HTTP+gRPC Server")
 	rootFlags.StringVar(&opts.ServerBind, "server-bind", opts.ServerBind, "server bind (HTTP + gRPC)")
 	rootFlags.StringVar(&opts.ServerCORSAllowedOrigins, "server-cors-allowed-origins", opts.ServerCORSAllowedOrigins, "allowed CORS origins")
 	rootFlags.DurationVar(&opts.ServerRequestTimeout, "server-request-timeout", opts.ServerRequestTimeout, "server request timeout")
 	rootFlags.DurationVar(&opts.ServerShutdownTimeout, "server-shutdown-timeout", opts.ServerShutdownTimeout, "server shutdown timeout")
 	rootFlags.BoolVar(&opts.ServerWithPprof, "server-with-pprof", opts.ServerWithPprof, "enable pprof on HTTP server")
-	/// github
+	// github
 	rootFlags.BoolVar(&opts.EnableGitHub, "enable-github", opts.EnableGitHub, "enable GitHub")
 	rootFlags.StringVar(&opts.GitHubMoulToken, "github-moul-token", opts.GitHubMoulToken, `"moul" GitHub token`)
 	rootFlags.StringVar(&opts.GitHubMoulbotToken, "github-moul-bot-token", opts.GitHubMoulbotToken, `"moul" GitHub token`)
@@ -78,7 +78,7 @@ func runCmd(ctx context.Context, _ []string) error {
 	sentry.CaptureMessage("Server Started.")
 
 	// init
-	rand.Seed(srand.Secure())
+	rand.Seed(srand.MustSecure())
 	gr := run.Group{}
 	gr.Add(run.SignalHandler(ctx, syscall.SIGTERM, syscall.SIGINT, os.Interrupt, os.Kill))
 
@@ -92,7 +92,7 @@ func runCmd(ctx context.Context, _ []string) error {
 		return err
 	}
 	opts.Logger = logger
-	//opts.Context = ctx
+	// opts.Context = ctx
 
 	// init service
 	svc := moulbot.New(opts)
