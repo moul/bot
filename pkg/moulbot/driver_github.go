@@ -44,6 +44,7 @@ func (svc *Service) StartGitHub() error {
 	return nil
 }
 
+// nolint:gocyclo
 func (svc *Service) githubRoutine() {
 	alltimeMostRecent := time.Time{}
 	for {

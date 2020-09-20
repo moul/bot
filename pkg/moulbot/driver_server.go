@@ -191,13 +191,13 @@ func (svc *Service) grpcServer() *grpc.Server {
 	serverUnaryOpts := []grpc.UnaryServerInterceptor{grpc_recovery.UnaryServerInterceptor(recoveryOpts...)}
 	serverStreamOpts = append(serverStreamOpts,
 		grpc_auth.StreamServerInterceptor(authFunc),
-		//grpc_ctxtags.StreamServerInterceptor(),
+		// grpc_ctxtags.StreamServerInterceptor(),
 		grpc_zap.StreamServerInterceptor(svc.logger),
 	)
 	serverUnaryOpts = append(
 		serverUnaryOpts,
 		grpc_auth.UnaryServerInterceptor(authFunc),
-		//grpc_ctxtags.UnaryServerInterceptor(),
+		// grpc_ctxtags.UnaryServerInterceptor(),
 		grpc_zap.UnaryServerInterceptor(svc.logger),
 	)
 	if svc.logger.Check(zap.DebugLevel, "") != nil {

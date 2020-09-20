@@ -15,7 +15,7 @@ type Service struct {
 	ctx    context.Context
 	cancel func()
 
-	/// drivers
+	// drivers
 
 	discord discordDriver
 	server  serverDriver

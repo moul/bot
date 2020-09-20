@@ -12,13 +12,13 @@ type Opts struct {
 	Logger  *zap.Logger
 	DevMode bool
 
-	/// Discord
+	// Discord
 
 	EnableDiscord       bool
 	DiscordToken        string
 	DiscordAdminChannel string
 
-	/// Server
+	// Server
 
 	EnableServer             bool
 	ServerBind               string
@@ -27,7 +27,7 @@ type Opts struct {
 	ServerShutdownTimeout    time.Duration
 	ServerWithPprof          bool
 
-	/// GitHub
+	// GitHub
 
 	EnableGitHub       bool
 	GitHubMoulToken    string
