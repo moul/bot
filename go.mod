@@ -18,7 +18,6 @@ require (
 	github.com/soheilhy/cmux v0.1.4
 	github.com/tailscale/depaware v0.0.0-20200914232109-e09ee10c1824
 	github.com/treastech/logger v0.0.0-20180705232552-e381e9ecf2e3
-	go.uber.org/multierr v1.6.0 // indirect
 	go.uber.org/zap v1.16.0
 	golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a // indirect
 	golang.org/x/net v0.0.0-20200904194848-62affa334b73 // indirect
@@ -32,4 +31,5 @@ require (
 	moul.io/banner v1.0.1
 	moul.io/godev v1.7.0
 	moul.io/srand v1.5.0
+	moul.io/zapconfig v1.1.0
 )

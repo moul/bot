@@ -13,10 +13,9 @@ import (
 	"github.com/oklog/run"
 	ff "github.com/peterbourgon/ff/v3"
 	"github.com/peterbourgon/ff/v3/ffcli"
-	"go.uber.org/zap"
-	"go.uber.org/zap/zapcore"
 	"moul.io/bot/pkg/moulbot"
 	"moul.io/srand"
+	"moul.io/zapconfig"
 )
 
 func main() {
@@ -83,15 +82,7 @@ func runCmd(ctx context.Context, _ []string) error {
 	gr.Add(run.SignalHandler(ctx, syscall.SIGTERM, syscall.SIGINT, os.Interrupt, os.Kill))
 
 	// bearer
-	config := zap.NewDevelopmentConfig()
-	config.Level.SetLevel(zap.DebugLevel)
-	config.DisableStacktrace = true
-	config.EncoderConfig.EncodeLevel = zapcore.CapitalColorLevelEncoder
-	logger, err := config.Build()
-	if err != nil {
-		return err
-	}
-	opts.Logger = logger
+	opts.Logger = zapconfig.Configurator{}.MustBuild()
 	// opts.Context = ctx
 
 	// init service
