@@ -12,6 +12,7 @@ import (
 	"golang.org/x/oauth2"
 	"moul.io/banner"
 	"moul.io/godev"
+	"moul.io/u"
 )
 
 type githubDriver struct {
@@ -146,7 +147,7 @@ func (svc *Service) githubRoutine() {
 						eventLogger.Error("invalid payload")
 						continue
 					}
-					fmt.Println("typed", godev.PrettyJSON(typed))
+					fmt.Println("typed", u.PrettyJSON(typed))
 					repo := typed.GetForkee()
 					eventLogger.Info("new fork", zap.String("name", repo.GetFullName()))
 					parts := strings.Split(repo.GetFullName(), "/")

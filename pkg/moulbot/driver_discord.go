@@ -8,7 +8,7 @@ import (
 	"github.com/bwmarrin/discordgo"
 	"go.uber.org/zap"
 	"moul.io/banner"
-	"moul.io/godev"
+	"moul.io/u"
 )
 
 type discordDriver struct {
@@ -45,7 +45,7 @@ func (svc *Service) StartDiscord() error {
 			if m.Author.Bot {
 				return
 			}
-			log.Println(godev.JSON(m))
+			log.Println(u.JSON(m))
 			_, err := s.ChannelMessageSend(m.ChannelID, ">>> "+m.Content)
 			if err != nil {
 				svc.logger.Error("discord.ChannelMessageSend", zap.Error(err))
