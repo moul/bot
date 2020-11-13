@@ -21,9 +21,9 @@ require (
 	go.uber.org/zap v1.16.0
 	golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a // indirect
 	golang.org/x/net v0.0.0-20200904194848-62affa334b73 // indirect
-	golang.org/x/oauth2 v0.0.0-20200902213428-5d25da1a8d43
+	golang.org/x/oauth2 v0.0.0-20201109201403-9fd604954f58
 	golang.org/x/sys v0.0.0-20200918174421-af09f7315aff // indirect
-	google.golang.org/genproto v0.0.0-20201106154455-f9bfe239b0ba
+	google.golang.org/genproto v0.0.0-20201113130914-ce600e9a6f9e
 	google.golang.org/grpc v1.33.2
 	google.golang.org/grpc/examples v0.0.0-20200709232328-d8193ee9cc3e // indirect
 	google.golang.org/protobuf v1.25.0
@@ -31,6 +31,6 @@ require (
 	moul.io/banner v1.0.1
 	moul.io/godev v1.7.0
 	moul.io/srand v1.6.1
-	moul.io/u v1.18.0
+	moul.io/u v1.19.0
 	moul.io/zapconfig v1.2.0
 )
