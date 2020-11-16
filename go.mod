@@ -4,7 +4,7 @@ go 1.13
 
 require (
 	github.com/bwmarrin/discordgo v0.22.0
-	github.com/getsentry/sentry-go v0.7.0
+	github.com/getsentry/sentry-go v0.8.0
 	github.com/go-chi/chi v4.1.2+incompatible
 	github.com/gogo/gateway v1.1.0
 	github.com/golang/protobuf v1.4.3
@@ -23,7 +23,7 @@ require (
 	golang.org/x/net v0.0.0-20200904194848-62affa334b73 // indirect
 	golang.org/x/oauth2 v0.0.0-20201109201403-9fd604954f58
 	golang.org/x/sys v0.0.0-20200918174421-af09f7315aff // indirect
-	google.golang.org/genproto v0.0.0-20201113130914-ce600e9a6f9e
+	google.golang.org/genproto v0.0.0-20201116123041-bf037d74fda1
 	google.golang.org/grpc v1.33.2
 	google.golang.org/grpc/examples v0.0.0-20200709232328-d8193ee9cc3e // indirect
 	google.golang.org/protobuf v1.25.0
