@@ -4,7 +4,7 @@ go 1.13
 
 require (
 	github.com/bwmarrin/discordgo v0.22.0
-	github.com/getsentry/sentry-go v0.8.0
+	github.com/getsentry/sentry-go v0.9.0
 	github.com/go-chi/chi v4.1.2+incompatible
 	github.com/gogo/gateway v1.1.0
 	github.com/golang/protobuf v1.4.3
@@ -16,15 +16,13 @@ require (
 	github.com/peterbourgon/ff/v3 v3.0.0
 	github.com/rs/cors v1.7.0
 	github.com/soheilhy/cmux v0.1.4
-	github.com/tailscale/depaware v0.0.0-20201102210757-e2f543bafb1d
+	github.com/tailscale/depaware v0.0.0-20201214215404-77d1e9757027
 	github.com/treastech/logger v0.0.0-20180705232552-e381e9ecf2e3
 	go.uber.org/zap v1.16.0
 	golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a // indirect
-	golang.org/x/net v0.0.0-20200904194848-62affa334b73 // indirect
-	golang.org/x/oauth2 v0.0.0-20201109201403-9fd604954f58
-	golang.org/x/sys v0.0.0-20200918174421-af09f7315aff // indirect
-	google.golang.org/genproto v0.0.0-20201116123041-bf037d74fda1
-	google.golang.org/grpc v1.33.2
+	golang.org/x/oauth2 v0.0.0-20201208152858-08078c50e5b5
+	google.golang.org/genproto v0.0.0-20201214200347-8c77b98c765d
+	google.golang.org/grpc v1.34.0
 	google.golang.org/grpc/examples v0.0.0-20200709232328-d8193ee9cc3e // indirect
 	google.golang.org/protobuf v1.25.0
 	gopkg.in/yaml.v3 v3.0.0-20200615113413-eeeca48fe776 // indirect
@@ -32,5 +30,5 @@ require (
 	moul.io/godev v1.7.0
 	moul.io/srand v1.6.1
 	moul.io/u v1.19.1
-	moul.io/zapconfig v1.2.0
+	moul.io/zapconfig v1.3.0
 )
