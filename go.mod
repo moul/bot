@@ -29,6 +29,6 @@ require (
 	moul.io/banner v1.0.1
 	moul.io/godev v1.7.0
 	moul.io/srand v1.6.1
-	moul.io/u v1.19.1
+	moul.io/u v1.20.0
 	moul.io/zapconfig v1.3.0
 )
