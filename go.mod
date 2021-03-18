@@ -7,7 +7,7 @@ require (
 	github.com/getsentry/sentry-go v0.10.0
 	github.com/go-chi/chi v4.1.2+incompatible
 	github.com/gogo/gateway v1.1.0
-	github.com/golang/protobuf v1.4.3
+	github.com/golang/protobuf v1.5.0
 	github.com/google/go-github/v32 v32.1.0
 	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.2.2
@@ -24,7 +24,7 @@ require (
 	google.golang.org/genproto v0.0.0-20210309190941-1aeedc14537d
 	google.golang.org/grpc v1.36.0
 	google.golang.org/grpc/examples v0.0.0-20200709232328-d8193ee9cc3e // indirect
-	google.golang.org/protobuf v1.25.0
+	google.golang.org/protobuf v1.26.0
 	gopkg.in/yaml.v3 v3.0.0-20200615113413-eeeca48fe776 // indirect
 	moul.io/banner v1.0.1
 	moul.io/godev v1.7.0
