@@ -25,10 +25,9 @@ require (
 	google.golang.org/grpc v1.37.0
 	google.golang.org/grpc/examples v0.0.0-20200709232328-d8193ee9cc3e // indirect
 	google.golang.org/protobuf v1.26.0
-	gopkg.in/yaml.v3 v3.0.0-20200615113413-eeeca48fe776 // indirect
 	moul.io/banner v1.0.1
 	moul.io/godev v1.7.0
 	moul.io/srand v1.6.1
-	moul.io/u v1.20.0
+	moul.io/u v1.22.0
 	moul.io/zapconfig v1.3.0
 )
