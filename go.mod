@@ -10,7 +10,7 @@ require (
 	github.com/golang/protobuf v1.5.2
 	github.com/google/go-github/v32 v32.1.0
 	github.com/gorilla/websocket v1.4.2 // indirect
-	github.com/grpc-ecosystem/go-grpc-middleware v1.2.2
+	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
 	github.com/grpc-ecosystem/grpc-gateway v1.16.0
 	github.com/oklog/run v1.1.1-0.20200508094559-c7096881717e
 	github.com/peterbourgon/ff/v3 v3.0.0
@@ -23,7 +23,6 @@ require (
 	golang.org/x/oauth2 v0.0.0-20210402161424-2e8d93401602
 	google.golang.org/genproto v0.0.0-20210406143921-e86de6bf7a46
 	google.golang.org/grpc v1.37.0
-	google.golang.org/grpc/examples v0.0.0-20200709232328-d8193ee9cc3e // indirect
 	google.golang.org/protobuf v1.26.0
 	moul.io/banner v1.0.1
 	moul.io/godev v1.7.0
