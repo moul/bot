@@ -18,7 +18,7 @@ require (
 	github.com/soheilhy/cmux v0.1.5
 	github.com/tailscale/depaware v0.0.0-20201214215404-77d1e9757027
 	github.com/treastech/logger v0.0.0-20180705232552-e381e9ecf2e3
-	go.uber.org/zap v1.16.0
+	go.uber.org/zap v1.17.0
 	golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a // indirect
 	golang.org/x/oauth2 v0.0.0-20210514164344-f6687ab2804c
 	google.golang.org/genproto v0.0.0-20210521181308-5ccab8a35a9a
