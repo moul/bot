@@ -16,17 +16,17 @@ require (
 	github.com/peterbourgon/ff/v3 v3.0.0
 	github.com/rs/cors v1.7.0
 	github.com/soheilhy/cmux v0.1.5
-	github.com/tailscale/depaware v0.0.0-20201214215404-77d1e9757027
+	github.com/tailscale/depaware v0.0.0-20210622194025-720c4b409502
 	github.com/treastech/logger v0.0.0-20180705232552-e381e9ecf2e3
 	go.uber.org/zap v1.17.0
 	golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a // indirect
-	golang.org/x/oauth2 v0.0.0-20210514164344-f6687ab2804c
-	google.golang.org/genproto v0.0.0-20210611144927-798beca9d670
+	golang.org/x/oauth2 v0.0.0-20210622215436-a8dc77f794b6
+	google.golang.org/genproto v0.0.0-20210624195500-8bfb893ecb84
 	google.golang.org/grpc v1.38.0
-	google.golang.org/protobuf v1.26.0
+	google.golang.org/protobuf v1.27.0
 	moul.io/banner v1.0.1
 	moul.io/godev v1.7.0
 	moul.io/srand v1.6.1
-	moul.io/u v1.24.0
+	moul.io/u v1.25.1
 	moul.io/zapconfig v1.4.0
 )
