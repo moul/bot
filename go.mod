@@ -21,12 +21,12 @@ require (
 	go.uber.org/zap v1.18.1
 	golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a // indirect
 	golang.org/x/oauth2 v0.0.0-20210628180205-a41e5a781914
-	google.golang.org/genproto v0.0.0-20210707162618-8b30bde2da8a
+	google.golang.org/genproto v0.0.0-20210729151513-df9385d47c1b
 	google.golang.org/grpc v1.39.0
 	google.golang.org/protobuf v1.27.1
 	moul.io/banner v1.0.1
 	moul.io/godev v1.7.0
 	moul.io/srand v1.6.1
-	moul.io/u v1.26.0
+	moul.io/u v1.27.0
 	moul.io/zapconfig v1.4.0
 )
