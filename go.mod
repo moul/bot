@@ -21,7 +21,7 @@ require (
 	go.uber.org/zap v1.19.1
 	golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a // indirect
 	golang.org/x/oauth2 v0.0.0-20210819190943-2bc19b11175f
-	google.golang.org/genproto v0.0.0-20210921142501-181ce0d877f6
+	google.golang.org/genproto v0.0.0-20210924002016-3dee208752a0
 	google.golang.org/grpc v1.40.0
 	google.golang.org/protobuf v1.27.1
 	moul.io/banner v1.0.1
