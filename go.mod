@@ -21,7 +21,7 @@ require (
 	golang.org/x/oauth2 v0.0.0-20210819190943-2bc19b11175f
 	google.golang.org/genproto v0.0.0-20210924002016-3dee208752a0
 	google.golang.org/grpc v1.42.0
-	google.golang.org/protobuf v1.27.1
+	google.golang.org/protobuf v1.28.1
 	moul.io/banner v1.0.1
 	moul.io/godev v1.7.0
 	moul.io/srand v1.6.1
