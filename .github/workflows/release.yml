@@ -6,8 +6,8 @@ jobs:
   semantic-release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.0
-      - uses: codfish/semantic-release-action@v1
+      - uses: actions/checkout@v4.2.2
+      - uses: codfish/semantic-release-action@v3
         if: github.ref == 'refs/heads/master'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
